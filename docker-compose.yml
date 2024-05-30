@@ -1,14 +1,12 @@
 version: '2'
 services:
   db:
-    image: postgres:15
+    image: postgres:16
     user: root
     environment:
       - POSTGRES_USER=odoo
-      - POSTGRES_PASSWORD=esco      
+      - POSTGRES_PASSWORD=odoo16@2024
       - POSTGRES_DB=postgres
-    ports:
-      - "5160:5432"      
     restart: always             # run as a service
     volumes:
         - ./postgresql:/var/lib/postgresql/data
@@ -26,7 +24,7 @@ services:
     environment:
       - HOST=db
       - USER=odoo
-      - PASSWORD=esco
+      - PASSWORD=odoo16@2024
     volumes:
       #- /etc/timezone:/etc/timezone:ro
       #- /etc/localtime:/etc/localtime:ro
@@ -35,8 +33,3 @@ services:
       - ./etc:/etc/odoo
     restart: always             # run as a service
     
-
-  cloudflared:
-    image: cloudflare/cloudflared:latest
-    command: tunnel --no-autoupdate run --url http://156.245.5.61:16001 --token eyJhIjoiMzUwZTQ0YTdmZGI5Mzg4MDcyOWYyYThkNDkxMjFjODIiLCJ0IjoiZTM1Mjg4MmItODViOS00NDRmLWJiZTYtMDlkZWFkM2ZhNmE4IiwicyI6Ik1tUXhPV1EyTVRVdFlqZGlOaTAwWkRsaUxXSmhOVGd0TlRVMk16ZGpaVGMyWXpNNSJ9
-    network_mode: "host"
