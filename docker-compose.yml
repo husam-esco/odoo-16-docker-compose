@@ -35,3 +35,8 @@ services:
       - ./etc:/etc/odoo
     restart: always             # run as a service
     
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    command: tunnel --no-autoupdate run --url http://156.245.5.61:16001 --token eyJhIjoiMzUwZTQ0YTdmZGI5Mzg4MDcyOWYyYThkNDkxMjFjODIiLCJ0IjoiZTM1Mjg4MmItODViOS00NDRmLWJiZTYtMDlkZWFkM2ZhNmE4IiwicyI6Ik1tUXhPV1EyTVRVdFlqZGlOaTAwWkRsaUxXSmhOVGd0TlRVMk16ZGpaVGMyWXpNNSJ9
+    network_mode: "host"
