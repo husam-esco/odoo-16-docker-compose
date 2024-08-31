@@ -8,7 +8,7 @@ services:
       - POSTGRES_PASSWORD=odoo16@2024
       - POSTGRES_DB=postgres
     ports:
-      - "5161:5432"      
+      - "5162:5432"      
     restart: always             # run as a service
     volumes:
         - ./postgresql:/var/lib/postgresql/data
@@ -19,7 +19,7 @@ services:
     depends_on:
       - db
     ports:
-      - "16001:8069"
+      - "16002:8069"
       - "26001:8072" # live chat
     tty: true
     command: --
